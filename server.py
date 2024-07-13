@@ -19,7 +19,7 @@ elif env_file == 'dev':
 else:
     load_dotenv(env_file)
 
-#config 设置
+# config 设置
 config.HOST = os.getenv('HOST', '0.0.0.0')
 config.PORT = os.getenv('PORT', '8080')
 config.EB_AGENT_ACCESS_TOKEN = os.getenv('EB_AGENT_ACCESS_TOKEN', None)
