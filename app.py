@@ -2,7 +2,7 @@ from flask import jsonify, request, Flask
 import nest_asyncio
 from flask_cors import CORS
 
-from models import articlePolish
+from models import articleHandle
 from models import sbsOCR
 
 # 解决事件循环
@@ -20,12 +20,12 @@ def home():
     return '瞬爆闪AI编辑器,好耶！'
 
 
-# ai基础润色
+# ai润色
 @app.route('/api/article_polish', methods=['POST'])
 async def article_polish():
     # 读取数据
     json_data = request.get_json()
-    data = await articlePolish.handle_data(json_data)
+    data = await articleHandle.handle_data(json_data, 'article_polish')
     print('ai润色请求成功')
     return jsonify(data)
 
