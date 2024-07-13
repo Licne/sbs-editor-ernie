@@ -8,7 +8,7 @@ from erniebot_agent.memory import HumanMessage, AIMessage, SystemMessage, Functi
 
 # 数据处理
 async def handle_data(json_data):
-    print(json_data)
+    # print(json_data)
     ai_res_data = {
         'content': json_data['content']
     }
@@ -27,7 +27,7 @@ async def ai_polish(res_data):
         要求:
         1.保证文章核心内容不变，
         2.使语句更加流畅通顺,
-        3.使用markdown格式并进行格式优化,
+        3.使用markdown格式并优化,
         4.如果用户提供的内容少于20字则拒绝优化并回复"内容过短，请重新输入" 
         ''')
 

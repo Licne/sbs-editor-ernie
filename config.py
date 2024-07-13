@@ -1,0 +1,5 @@
+
+HOST = None
+PORT = None
+EB_AGENT_ACCESS_TOKEN = None
+SBS_OCR_API_URL = None
