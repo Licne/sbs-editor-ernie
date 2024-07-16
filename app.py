@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 from models import articleHandle
 from models import sbsOCR
-
+from models import mindMap
 # 解决事件循环
 nest_asyncio.apply()
 # 创建实例
@@ -69,6 +69,13 @@ async def sbs_ocr():
     data = await sbsOCR.handle_data(json_data)
     return jsonify(data)
 
+# 思维导图
+@app.route('/api/mind_map', methods=['POST'])
+async def mind_map():
+    print('思维导图请求')
+    json_data = request.get_json()
+    data = await mindMap.handle_data(json_data)
+    return jsonify(data)
 
 ##################################
 # 内部测试接口

@@ -44,6 +44,124 @@ intelligent_typeset_prompts = '''
 8. 识别并优化链接。
 '''
 
+mind_map_step1_prompts = '''
+
+## 功能要求:
+主要: 提取文章主要内容信息，生成markdown格式思维导图。
+附加:
+1. 最多到四级标题。
+2. 如果文章不存在结构性，直接输出"none structure"
+3. 以下为示例
+
+# {一级标题}
+## {二级标题}
+### {三级标题}
+- {无序列表}
+- {无序列表}
+### {三级标题}
+#### {四级标题}
+- {无序列表}
+- {无序列表}
+## 二级标题
+### {三级标题}
+#### {四级标题}
+1. {有序列表}
+2. {有序列表}
+
+'''
+# 功能废弃
+mind_map_step2_prompts = '''
+## 功能要求:
+主要: 将markdown格式思维导图转换为json格式，请只输出json格式结果，绝对不要包含任何其他多余文字
+以下为示例:
+
+输入:
+
+# {一级标题}
+## {二级标题}
+### {三级标题}
+- {无序列表}
+- {无序列表}
+### {三级标题}
+#### {四级标题}
+- {无序列表}
+- {无序列表}
+## 二级标题
+### {三级标题}
+#### {四级标题}
+1. {有序列表}
+2. {有序列表}
+
+输出:
+
+
+  {
+    "data": "{一级标题}",
+    "children": [
+      {
+        "data": "{二级标题}",
+        "children": [
+          {
+            "data": "{三级标题}",
+            "children": [
+              {
+                "data": "{无序列表}",
+                "children": []
+              },
+              {
+                "data": "{无序列表}",
+                "children": []
+              }
+            ]
+          },
+          {
+            "data": "{三级标题}",
+            "children": [
+              {
+                "data": "{四级标题}",
+                "children": [
+                  {
+                    "data": "{无序列表}",
+                    "children": []
+                  },
+                  {
+                    "data": "{无序列表}",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": "二级标题",
+        "children": [
+          {
+            "data": "{三级标题}",
+            "children": [
+              {
+                "data": "{四级标题}",
+                "children": [
+                  {
+                    "data": "{有序列表}",
+                    "children": []
+                  },
+                  {
+                    "data": "{有序列表}",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+
+
+'''
 
 # 取得功能提示词
 def get_func_prompts(ai_type):
@@ -55,5 +173,9 @@ def get_func_prompts(ai_type):
         return continue_writing_prompts
     elif ai_type == 'intelligent_typeset':
         return intelligent_typeset_prompts
+    elif ai_type == 'mind_map_step1':
+        return mind_map_step1_prompts
+    elif ai_type == 'mind_map_step2':
+        return mind_map_step2_prompts
     else:
         return None
