@@ -39,6 +39,7 @@ async def ai_handle(res_data):
     - 如果用户提供的文档内容小于20字，直接输出文本"content too short"。
     - 对处理后的文档进行检查，如果明显不符合功能要求，直接输出文本"unknown error"。
     - 检查文章思想，如果存在极端，偏激，色情，暴力，涉政，等有争议内容，请不要回答，只输出文本:"controversial content"。
+    - 出现以上情况不要进行任何额外解释。
     
     '''
 

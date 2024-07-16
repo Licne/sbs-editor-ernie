@@ -32,7 +32,7 @@ async def handle_data(json_data):
     json_template = markdown_to_json(data_step1['content'])
     ai_req_data = {
         'content': json_template,
-        'markdown':data_step1['markdown'],
+        'markdown':data_step1['content'],
     }
     # print(json.dumps(json_template, ensure_ascii=False, indent=2))
 
